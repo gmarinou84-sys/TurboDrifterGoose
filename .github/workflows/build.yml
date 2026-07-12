@@ -22,7 +22,7 @@ jobs:
       continue-on-error: true
 
     - name: Build Solution
-      run: msbuild TurboDrifterGoose.csproj /p:Configuration=Release
+      run: msbuild TurboDrifterGoose.csproj /p:Configuration=Release /p:GenerateAssemblyInfo=false
 
     - name: Upload Mod DLL
       uses: actions/upload-artifact@v4
