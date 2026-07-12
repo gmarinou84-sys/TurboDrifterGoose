@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using GooseShared;
+using SamEngine;
 
 namespace TurboDrifterGoose
 {
@@ -61,6 +62,10 @@ namespace TurboDrifterGoose
                 g.FillRectangle(whiteBrush, offsetX + 12, offsetY + 3, 2, 1);
             }
 
+            g.Restore(state);
+        }
+    }
+}
             g.Restore(state);
         }
     }
