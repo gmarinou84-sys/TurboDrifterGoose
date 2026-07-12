@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Reference Include="GooseModdingAPI">
-      <HintPath>D:\a\TurboDrifterGoose\TurboDrifterGoose\GooseModdingAPI\bin\Release\GooseModdingAPI.dll</HintPath>
+      <HintPath>GooseModdingAPI\bin\Release\GooseModdingAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
