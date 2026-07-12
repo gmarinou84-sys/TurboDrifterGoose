@@ -66,7 +66,3 @@ namespace TurboDrifterGoose
         }
     }
 }
-            g.Restore(state);
-        }
-    }
-}
