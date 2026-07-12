@@ -2,25 +2,32 @@ name: Build Mod
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v4
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
-    - name: Navigate to Workspace
-      run: cd $GITHUB_WORKSPACE
-
     - name: Restore NuGet Packages
-      run: nuget restore TurboDrifterGoose.csproj
+      run: nuget restore TurboDrifterGoose.sln
+      continue-on-error: true
 
-    - name: Build Mod File
-      run: msbuild TurboDrifterGoose.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:GenerateAssemblyInfo=false
+    - name: Build Solution
+      run: msbuild TurboDrifterGoose.sln /p:Configuration=Release
+
+    - name: Upload Mod DLL
+      uses: actions/upload-artifact@v4
+      with:
+        name: TurboDrifterGoose-DLL
+        path: |
+          **/bin/Release/**/TurboDrifterGoose.dll
+          **/bin/Release/TurboDrifterGoose.dll
