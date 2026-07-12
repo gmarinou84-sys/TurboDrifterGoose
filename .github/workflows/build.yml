@@ -18,11 +18,11 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Restore NuGet Packages
-      run: nuget restore
+      run: nuget restore TurboDrifterGoose.csproj
       continue-on-error: true
 
     - name: Build Solution
-      run: msbuild /p:Configuration=Release
+      run: msbuild TurboDrifterGoose.csproj /p:Configuration=Release
 
     - name: Upload Mod DLL
       uses: actions/upload-artifact@v4
