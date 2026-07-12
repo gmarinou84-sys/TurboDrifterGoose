@@ -3,9 +3,14 @@
     <TargetFramework>net472</TargetFramework>
     <OutputType>Library</OutputType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="GooseModdingAPI\**\*.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="GooseModdingAPI">
-      <HintPath>.\GooseModdingAPI.dll</HintPath>
+      <HintPath>D:\a\TurboDrifterGoose\TurboDrifterGoose\GooseModdingAPI\bin\Release\GooseModdingAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
