@@ -11,6 +11,20 @@ namespace TurboDrifterGoose
         public void Init()
         {
             InjectionPoints.PostRenderEvent += DrawGlasses;
+            InjectionPoints.PreTickEvent += ApplyDriftAndSpeed;
+        }
+
+        private void ApplyDriftAndSpeed(GooseEntity goose)
+        {
+            goose.parameters.WalkSpeed = 300f;
+            goose.parameters.RunSpeed = 500f;
+            goose.parameters.ChargeSpeed = 900f;
+            goose.parameters.AccelerationCharged = 6000f;
+
+            if (goose.currentSpeed > 400f)
+            {
+                goose.trackMudEndTime = 5.0f;
+            }
         }
 
         private void DrawGlasses(GooseEntity goose, Graphics g)
