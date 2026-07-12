@@ -23,4 +23,4 @@ jobs:
       run: nuget restore TurboDrifterGoose.csproj
 
     - name: Build Mod File
-      run: msbuild TurboDrifterGoose.csproj /p:Configuration=Release /p:Platform="Any CPU"
+      run: msbuild TurboDrifterGoose.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:GenerateAssemblyInfo=false
