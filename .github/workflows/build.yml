@@ -1,0 +1,32 @@
+name: Build Mod
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+
+    - name: Restore NuGet Packages
+      run: nuget restore TurboDrifterGoose.csproj
+
+    - name: Build Mod File
+      run: msbuild TurboDrifterGoose.csproj /p:Configuration=Release
+
+    - name: Upload Mod Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MyGooseMod
+        path: bin/Release/
